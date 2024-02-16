@@ -25,11 +25,16 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^27.8.0",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "nock": "^13.5.1"
   },
   "dependencies": {
     "axios": "^1.6.7",
     "commander": "^12.0.0",
-    "nock": "^13.5.1"
+    "fsp": "^0.1.2",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "process": "^0.11.10",
+    "url": "^0.11.3"
   }
 }
