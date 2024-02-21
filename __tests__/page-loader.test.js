@@ -1,14 +1,14 @@
 import os from "os";
 import path from "path";
-import exampleOfHtmlFile from '../__fixtures__/exampleOfHtmlFile.html';
-
-const newdir = os.tmpdir();
-const newPath = path.join(newdir, 'ru-hexlet-io-courses.html');
+import nock from 'nock';
+import fs from 'fs/promises';
+import pageLoader from "../src/pageLoader.js";
 
 nock.disableNetConnect();
 
+let fakepath;
 beforeEach(async () => {
-  await fs.mkdtemp(path.join(newdir, 'page-loader-'));
+  fakepath = await fs.mkdtemp(path.join(os.tmpdir(), 'page-loader-'));
 })
 
 test('get connection', async () => {
@@ -16,6 +16,8 @@ test('get connection', async () => {
     .get('/courses')
     .reply(200);
 
-  const fullpath = await pageLoader('https://ru.hexlet.io/courses', newdir);
-  expect(fullpath).toEqual(newPath);
+  const testPath = path.join(fakepath, 'ru-hexlet-io-courses.html');
+  const result = await pageLoader('https://ru.hexlet.io/courses', fakepath);
+  const rightString = `Page was successfully downloaded into '${testPath}'`;
+  expect(result).toEqual(rightString);
 });
