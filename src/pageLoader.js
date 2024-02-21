@@ -1,7 +1,7 @@
 import axios from "axios";
 import { cwd } from "process";
 import path from "path";
-import fs from "fsp";
+import { writeFile } from "fs/promises";
 
 const generateFileName = (url) => {
   const domain = url.replace(/(^\w+:|^)\/\//, '');
@@ -11,15 +11,16 @@ const generateFileName = (url) => {
   return fileName;
 }
 
-const pageLoader = async (pagepath, saveToDir = cwd) => {
+const pageLoader = async (pagepath, directory = cwd()) => {
   try {
-    const responce = await axios.get(pagepath);
-    const html = responce.data;
-    const filepath = path.join(saveToDir, generateFileName(pagepath));
-    await fs.writeFile(filepath, html);
+    const response = await axios.get(pagepath);
+    const html = response.data;
+    const filepath = path.join(directory, generateFileName(pagepath));
+    await writeFile(filepath, html, 'utf-8');
     return `Page was successfully downloaded into '${filepath}'`;
   } catch (error) {
-    return `Error occurred: ${error.message}`;
+    console.log(error)
+    return `Error occurred: ${error}`;
   }
 };
 

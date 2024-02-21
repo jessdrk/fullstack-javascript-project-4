@@ -8,7 +8,7 @@ program
   .description('Page loader utility')
   .version('1.0.0')
   .argument('<url>')
-  .option('-o, --output <dir>', 'output dir', '/home/user/current-dir')
+  .option('-o, --output [dir]', 'output dir', '/home/jess/fullstack-javascript-project-4')
   .action(async (url) => {
     console.log(await pageLoader(url, program.opts().output));
   });
