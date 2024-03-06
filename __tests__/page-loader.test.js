@@ -1,8 +1,8 @@
-import os from "os";
-import path from "path";
+import os from 'os';
+import path from 'path';
 import nock from 'nock';
 import fs from 'fs/promises';
-import pageLoader from "../src/pageLoader.js";
+import pageLoader from '../src/pageLoader.js';
 import htmlResult from '../__fixtures__/htmlResult.js';
 
 nock.disableNetConnect();

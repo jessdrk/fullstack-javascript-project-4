@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { program } from "commander";
-import pageLoader from "../src/pageLoader.js";
+import { program } from 'commander';
+import pageLoader from '../src/pageLoader.js';
 
 program
   .name('page-loader')

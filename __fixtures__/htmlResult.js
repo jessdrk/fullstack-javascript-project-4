@@ -27,6 +27,6 @@ const htmlResult = `<!DOCTYPE html>
         <p>&copy; 2024 Моя компания. Все права защищены.</p>
     </footer>
 </body>
-</html>`
+</html>`;
 
 export default htmlResult;

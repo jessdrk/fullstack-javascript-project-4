@@ -1,15 +1,15 @@
-import axios from "axios";
-import { cwd } from "process";
-import path from "path";
-import { writeFile } from "fs/promises";
+import axios from 'axios';
+import { cwd } from 'process';
+import path from 'path';
+import { writeFile } from 'fs/promises';
 
 const generateFileName = (url) => {
   const domain = url.replace(/(^\w+:|^)\/\//, '');
   const sanitizedDomain = domain.replace(/\W+/g, '-');
-  const fileName = sanitizedDomain + '.html';
+  const fileName = `${sanitizedDomain}.html`;
 
   return fileName;
-}
+};
 
 const pageLoader = async (pagepath, directory = cwd()) => {
   try {
@@ -19,7 +19,6 @@ const pageLoader = async (pagepath, directory = cwd()) => {
     await writeFile(filepath, html, 'utf-8');
     return `Page was successfully downloaded into '${filepath}'`;
   } catch (error) {
-    console.log(error)
     return `Error occurred: ${error}`;
   }
 };
