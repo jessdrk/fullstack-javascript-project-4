@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+const htmlResult = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,4 +27,6 @@
         <p>&copy; 2024 Моя компания. Все права защищены.</p>
     </footer>
 </body>
-</html>
+</html>`
+
+export default htmlResult;
